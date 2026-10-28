@@ -5,17 +5,17 @@ from ConfigFromFile import get_config
 def display(message):
     print(message)
 
-def get_input_string(message):
-    return input(message)
+def get_input_string(name):
+    return input(name)
 
 def get_input_int(message):
     return int(get_input_string(message))
 
-def determine_winner(player, computer):
+def determine_winner(name, player, computer):
     if player == computer:
         result = "Draw"
     elif (player + 1)%3 == computer:
-        result = "Player wins"
+        result = print(name,"Wins")
     elif (computer + 1)%3 == player:
         result = "Computer Wins"
     return result
@@ -70,11 +70,13 @@ def get_game():
     return weapons_lists[user_game]
 
 def play():
+    name = ""
+    name = input("Enter name")
     weapon = get_game()
     player = get_user_choice(weapon)
     while player in [0, 1, 2]:
         computer = get_computer_choice(weapon)
-        result = determine_winner(player, computer)
+        result = determine_winner(name, player, computer)
         display(result)
         player = get_user_choice(weapon)
 
